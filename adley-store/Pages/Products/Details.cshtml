@@ -1,0 +1,44 @@
+﻿@page
+@model adley_store.Pages.Products.DetailsModel
+@{
+
+}
+
+<div class="page p-5 gradient_bg_3">
+    <div>
+        <h2 class="large_headings text-center gradient_heading gradient_bg_4">Product Details</h2>
+    </div>
+    <div class="container p-5" style="display: flex; justify-content: center; align-items: center">
+        @if (Model.SingleProduct == null)
+        {
+            <p>Product Not Found With This ID</p>
+        }
+        else
+        {
+            <div class="m-2 gradient_bg_1 product_detail_card">
+                <img class="" src=@Model.SingleProduct?.BannerUrl width="70" />
+                <div class="card_body p-3">
+                    <h3 class="card-title font-weight-bold" style="color: white">@Model.SingleProduct?.Name</h3>
+                    <p class="card-text" style="color: black">@Model.SingleProduct?.Description</p>
+                    <h5 class="card-text font-weight-bold">RS <span style="color:green; font-weight:700;">@Model.SingleProduct?.Price</span></h5>
+                    <p class="card-text">Stock: <span class="text-primary">@Model.SingleProduct?.Quantity</span></p>
+                    <p class="" style="color: yellow">4.9 / 5 rating</p>
+                    @if (Model.SingleProduct?.UserId == Model.CurrentUser)
+                    {
+                        <div>
+                            <button type="button" class="btn btn-warning">Update</button>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="btn_section">
+                            <a href = "/Cart/Add?id=@Model.SingleProduct?.Id" class="btn btn-warning" style="width: 150px; color: white;">Add To Cart</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿@page
+@model adley_store.Pages.Products.DeleteModel
+@{
+}
+
+<div class="page p-5">
+    @if (TempData.ContainsKey("ErrorMessage"))
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+</div>

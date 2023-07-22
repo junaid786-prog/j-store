@@ -1,0 +1,27 @@
+﻿@page
+@model adley_store.Pages.Products.ListModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="page p-5 gradient_bg_3">
+    <div>
+        <h2 class="large_headings text-center gradient_heading gradient_bg_4">All Products</h2>
+    </div>
+    <div class="products_container p-5">
+        @foreach (var product in Model.Products)
+        {
+            <div class="gradient_bg_1 product_list_card">
+                <img class="card-img-top" src=@product.BannerUrl width="150" />
+                <div class="card_body">
+                    <h3 class="font-weight-bold" style="color: white">@product.Name</h3>
+                    
+                    <div class="btn_section">
+                        <a href="/Products/Details?id=@product.Id">Detail </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    
+</div>

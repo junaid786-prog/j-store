@@ -1,0 +1,74 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+body {
+  margin-bottom: 60px;
+}
+
+.gradient-custom-3 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+}
+
+.gradient-custom-4 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}
+.gradient_bg_1 {
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    background: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+.gradient_bg_2 {
+    background-color: #00DBDE;
+    background-image: linear-gradient(315deg, #00DBDE 0%, #FC00FF 100%);
+    background: linear-gradient(315deg, #00DBDE 0%, #FC00FF 100%);
+}
+
+.gradient_bg_3 {
+    background-color: #85FFBD;
+    background-image: linear-gradient(0deg, #85FFBD 0%, #FFFB7D 100%);
+}
+
+.gradient_bg_4 {
+    background-color: #FBDA61;
+    background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+}
+
+.large_headings {
+    font-size: 30px;
+}
+.gradient_heading {
+    background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
