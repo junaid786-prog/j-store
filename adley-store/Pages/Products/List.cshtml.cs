@@ -19,6 +19,7 @@ namespace adley_store.Pages.Products
         public ListModel(AdleyDBContext adleyDBContext)
         {
             this.dbContext = adleyDBContext;
+            Products = new List<Product>();
         }
         public void OnGet()
         {

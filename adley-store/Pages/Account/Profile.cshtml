@@ -1,0 +1,49 @@
+﻿@page
+@model adley_store.Pages.Account.ProfileModel
+@{
+}
+<div class="page p-5 gradient_bg_3">
+    <div>
+        <h2 class="large_headings text-center gradient_heading gradient_bg_4">User Details</h2>
+    </div>
+    <div>
+        <h4>@Model.UserInfo.Name</h4>
+        <p>@Model.UserInfo.Email</p>
+        <img src ="@Model.UserInfo.ProfileUrl" class="" style="width: 60px; height: 60px; border-radius: 50%;"/>
+
+    </div>
+    <h3>My Products</h3>
+    <div class="products_container p-5">
+        @foreach (var product in Model.Products)
+        {
+            <div class="gradient_bg_1 product_list_card">
+                <img class="card-img-top" src=@product.BannerUrl width="150" />
+                <div class="card_body">
+                    <h3 class="font-weight-bold" style="color: white">@product.Name</h3>
+
+                    <div class="btn_section">
+                        <a href="/Products/Details?id=@product.Id">Detail </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <h3>Cart Items</h3>
+    <div class="products_container p-5">
+        @foreach (var product in Model.CartProducts)
+        {
+            <div class="gradient_bg_1 product_list_card">
+                <img class="card-img-top" src=@product.BannerUrl width="150" />
+                <div class="card_body">
+                    <h3 class="font-weight-bold" style="color: white">@product.Name</h3>
+
+                    <div class="btn_section">
+                        <a href="/Cart/Remove?id=@product.Id">Remove From Cart</a>
+                    </div>
+                </div>
+            </div>
+           }
+
+    </div>
+
+</div>
