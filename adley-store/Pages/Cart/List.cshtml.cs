@@ -21,10 +21,22 @@ namespace adley_store.Pages.Cart
         {
             this.dbContext = adleyDBContext;
         }
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            var currentUser = HttpContext.Session.GetString("userId");
+            if (currentUser == null)
+            {
+                return RedirectToPage("/Account/Login");
+            }
+
             Products = new List<Product>();
-            CartItems = dbContext.CartItems.ToList();
+            // first get user cart
+            var userCart = dbContext.Cart.FirstOrDefault(c => c.UserId == int.Parse(currentUser));
+            if (userCart == null) return Page();
+
+            CartItems = dbContext.CartItems
+                .Where(cItem => cItem.CartId == userCart.Id)
+                .ToList();
             foreach (CartItem cart in CartItems)
             {
                 var products = dbContext.Products.Where(p => p.Id == cart.ProductId).ToList();
@@ -36,6 +48,7 @@ namespace adley_store.Pages.Cart
                     Products.Add(product);
                 }
             }
+            return Page();
         }
     }
 }

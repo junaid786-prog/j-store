@@ -5,7 +5,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("AdleyStoreConnectionString");
 builder.Services.AddRazorPages();
-builder.Services.AddSession();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = "adleyStore.Session";
+    options.IdleTimeout = TimeSpan.FromMinutes(300); // Set the session timeout duration
+    options.Cookie.HttpOnly = true;
+    // Add more session options as needed
+});
 builder.Services.AddDbContextPool<AdleyDBContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("AdleyStoreConnectionString"), ServerVersion.AutoDetect(connectionString)));
     //UseSqlServer(

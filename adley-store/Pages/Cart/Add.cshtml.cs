@@ -33,8 +33,10 @@ namespace adley_store.Pages.Cart
             {
                 int userId = int.Parse(currentUser);
                 var existedCart = dbContext.Cart.FirstOrDefault(p => p.UserId == int.Parse(currentUser));
+                Console.WriteLine("existed cart" + existedCart);
+
                 if (existedCart == null) {
-                    Console.WriteLine("exit already");
+                    Console.WriteLine("not exit already");
                     UserCart = new adley_store.Models.Domain.Cart()
                     {
                         UserId = userId,
@@ -47,15 +49,17 @@ namespace adley_store.Pages.Cart
                     UserCart = existedCart;
                 }
 
-                var isItemAlreadyExists = dbContext.CartItems.Where(ci => ci.ProductId == productId && ci.CartId == UserCart.Id);
+                Console.WriteLine(productId + " " + UserCart.UserId);
+                var isItemAlreadyExists = dbContext.CartItems.FirstOrDefault(ci => ci.ProductId == productId && ci.CartId == UserCart.Id);
                 Console.WriteLine("is\n\n");
                 Console.WriteLine(isItemAlreadyExists);
 
-                //if (isItemAlreadyExists == null) {
-                //  return RedirectToPage("/Cart/List");
-                //}
+                if (isItemAlreadyExists != null) {
+                    TempData["ErrorMessage"] = "Item already exists";
+                    return RedirectToPage("/Cart/List");
+                }
 
-                int idToSave = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+                int idToSave = (int) DateTimeOffset.UtcNow.ToUnixTimeSeconds();
                 CartItem cartItem = new CartItem()
                 {
                     Id = idToSave,

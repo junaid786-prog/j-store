@@ -4,6 +4,10 @@
 }
 
 <div class="page p-5 gradient_bg_3">
+    @if (TempData.ContainsKey("ErrorMessage"))
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
     <div>
         <h2 class="large_headings text-center gradient_heading gradient_bg_4">Cart Items</h2>
     </div>
@@ -19,7 +23,7 @@
                     <p class="card-text">Stock: <span class="text-primary">@item?.Quantity</span></p>
                     <p class="" style="color: yellow">4.9 / 5 rating</p>
                     <div class="btn_section">
-                        <a href="#" class="btn btn-warning" style="width: 150px; color: white;">Remove From Cart</a>
+                        <a href="/Cart/Remove?id=@item?.Id" class="btn btn-warning" style="width: 150px; color: white;">Remove From Cart</a>
                     </div>
                 </div>
             </div>
